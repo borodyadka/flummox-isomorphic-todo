@@ -1,5 +1,3 @@
-'use strict';
-
 import {Router} from 'express';
 import MemoryStorage from './storages/MemoryStorage';
 import http from 'http';

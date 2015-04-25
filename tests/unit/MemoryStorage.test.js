@@ -1,5 +1,3 @@
-'use strict';
-
 import MemoryStorage from '../../server/storages/MemoryStorage';
 import assert from 'assert';
 import http from 'http';
