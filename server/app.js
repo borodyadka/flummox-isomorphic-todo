@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import React from 'react';
 import Router from 'react-router';
-import FluxComponent from '../node_modules/flummox/component';
+import FluxComponent from 'flummox/component';
 import Flux from '../shared/Flux';
 import api from './routes';
 import routes from '../client/routes';
