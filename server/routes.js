@@ -24,11 +24,13 @@ router.post('/tasks', async (req, res, next) => {
 
 router.put('/tasks', async (req, res) => {
     let completed = req.body.completed;
-    let tasks = (await storage.list()).map(task => {
-        return storage.update(task.id, {
+    let tasks = [];
+    (await storage.list()).forEach(task => {
+        let t = storage.update(task.id, {
             text: task.text,
             completed: Boolean(completed)
         });
+        tasks.push(t);
     });
     res.status(201).json(await Promise.all(tasks));
 });
