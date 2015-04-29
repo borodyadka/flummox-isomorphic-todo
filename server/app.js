@@ -66,22 +66,22 @@ app.use(async function (req, res, next) {
         log(e);
     }
 
-    res.send(
-        '<!DOCTYPE html>' +
-        '<html>' +
-            '<head>' +
-                '<meta charset="utf-8">' +
-                '<meta name="viewport" content="width=device-width, initial-scale=1">' +
-                '<title>HabraIsoTODO</title>' +
-                '<link rel="stylesheet" href="/css/index.css">' +
-            '</head>' +
-            '<body>' +
-                '<div id="app">' +
-                    html +
-                '</div>' +
-                '<script type="text/javascript" src="/js/bundle.js"></script>' +
-            '</body>' +
-        '</html>'
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>HabraIsoTODO</title>
+                <link rel="stylesheet" href="/css/index.css">
+            </head>
+            <body>
+                <div id="app">
+                    ${html}
+                </div>
+                <script type="text/javascript" src="/js/bundle.js"></script>
+            </body>
+        </html>`
     );
 });
 
