@@ -4,7 +4,7 @@ class ItemsCounter extends React.Component {
     render() {
         let count = this.props.tasks
             .map(task => task.completed ? 0 : 1)
-            .reduce((result, count) => result + count);
+            .reduce((result, count) => result + count, 0);
 
         return (
             <span className="todo-count">
