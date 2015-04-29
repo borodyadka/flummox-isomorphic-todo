@@ -1,7 +1,7 @@
 import http from 'http';
 
 function clone(obj) {
-    return JSON.parse(JSON.stringify(obj));
+    return Object.assign({}, obj);
 }
 
 export default class MemoryStorage {
