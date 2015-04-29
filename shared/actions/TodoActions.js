@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 
 const API_HOST = 'http://localhost:3000';
 
-class TodoListActions extends Actions {
+class TodoActions extends Actions {
     async getTasks() {
         return (await fetch(`${API_HOST}/api/tasks`, {
             headers: {
@@ -80,4 +80,4 @@ class TodoListActions extends Actions {
     }
 }
 
-export default TodoListActions;
+export default TodoActions;
