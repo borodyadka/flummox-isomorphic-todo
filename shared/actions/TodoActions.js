@@ -1,82 +1,90 @@
 import {Actions} from 'flummox';
-import fetch from 'isomorphic-fetch';
+import request from 'superagent';
 
 const API_HOST = 'http://localhost:3000';
 
 class TodoActions extends Actions {
-    async getTasks() {
-        return (await fetch(`${API_HOST}/api/tasks`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })).json();
+    getTasks() {
+        return new Promise((resolve, reject) => {
+            request.get(`${API_HOST}/api/tasks`)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async getActiveTasks() {
-        return (await fetch(`${API_HOST}/api/tasks/active`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })).json();
+    getActiveTasks() {
+        return new Promise((resolve, reject) => {
+            request.get(`${API_HOST}/api/tasks/active`)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async getCompletedTasks() {
-        return (await fetch(`${API_HOST}/api/tasks/completed`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })).json();
+    getCompletedTasks() {
+        return new Promise((resolve, reject) => {
+            request.get(`${API_HOST}/api/tasks/completed`)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async deleteCompletedTasks() {
-        return (await fetch(`${API_HOST}/api/tasks/completed`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })).json();
+    deleteCompletedTasks() {
+        return new Promise((resolve, reject) => {
+            request.del(`${API_HOST}/api/tasks/completed`)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async createTask(task) {
-        return (await fetch(`${API_HOST}/api/tasks`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(task)
-        })).json();
+    createTask(task) {
+        return new Promise((resolve, reject) => {
+            request.post(`${API_HOST}/api/tasks`)
+                .send(task)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async deleteTask(id) {
-        return (await fetch(`${API_HOST}/api/tasks/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })).json();
+    deleteTask(id) {
+        return new Promise((resolve, reject) => {
+            request.del(`${API_HOST}/api/tasks/${id}`)
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async toggleTask(id, completed) {
-        return (await fetch(`${API_HOST}/api/tasks/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({completed})
-        })).json();
+    toggleTask(id, completed) {
+        return new Promise((resolve, reject) => {
+            request.put(`${API_HOST}/api/tasks/${id}`)
+                .send({completed})
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 
-    async toggleAll(completed) {
-        return (await fetch(`${API_HOST}/api/tasks`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({completed})
-        })).json();
+    toggleAll(completed) {
+        return new Promise((resolve, reject) => {
+            request.put(`${API_HOST}/api/tasks`)
+                .send({completed})
+                .end((error, response) => {
+                    if (error) return reject(error);
+                    resolve(response.body);
+                });
+        });
     }
 }
 
