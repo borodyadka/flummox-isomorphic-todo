@@ -76,9 +76,7 @@ app.use(async function (req, res, next) {
                 <link rel="stylesheet" href="/css/index.css">
             </head>
             <body>
-                <div id="app">
-                    ${html}
-                </div>
+                <div id="app">${html}</div>
                 <script type="text/javascript" src="/js/bundle.js"></script>
             </body>
         </html>`
