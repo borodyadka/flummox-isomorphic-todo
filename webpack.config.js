@@ -31,6 +31,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.js/,
+                exclude: /node_modules/,
                 loaders: ['transform?brfs', 'babel-loader?stage=0']
             },
             {
